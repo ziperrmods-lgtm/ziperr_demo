@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziperr Mods - APK Premium & Tools Modifikasi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
+            --secondary: #0f0f1a;
+            --accent: #9b6cff;
+            --card-bg: #1b1b33;
+            --surface: #15152a;
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --border: #2a2a55;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--secondary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(155, 108, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+            padding-bottom: 80px;
+        }
+
+        /* Header Modern */
+        .header {
+            background: linear-gradient(135deg, var(--surface) 0%, rgba(21, 21, 42, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(to right, var(--accent), #a78bfa);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Sidebar Menu */
+        .sidebar-menu {
+            position: fixed;
+            top: 0;
+            left: -350px;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(21, 21, 42, 0.98) 0%, rgba(27, 27, 51, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            padding: 80px 25px 25px;
+            transition: var(--transition);
+            overflow-y: auto;
+            border-right: 1px solid rgba(155, 108, 255, 0.2);
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar-menu.active {
+            left: 0;
+        }
+
+        .sidebar-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .sidebar-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(155, 108, 255, 0.2);
+        }
+
+        .menu-logo {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+        }
+
+        .menu-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .menu-section {
+            margin-bottom: 30px;
+        }
+
+        .menu-section h3 {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .menu-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-channels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-channel {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .social-channel:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* User Dashboard */
+        .user-dashboard {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(21, 21, 42, 0.98) 0%, rgba(27, 27, 51, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            z-index: 1001;
+            padding: 80px 25px 25px;
+            transition: var(--transition);
+            overflow-y: auto;
+            border-left: 1px solid rgba(155, 108, 255, 0.2);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .user-dashboard.active {
+            right: 0;
+        }
+
+        .dashboard-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .dashboard-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(155, 108, 255, 0.2);
+        }
+
+        .dashboard-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .close-dashboard {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-dashboard:hover {
+            background: var(--danger);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .user-info-card {
+            background: linear-gradient(145deg, rgba(27, 27, 51, 0.9), rgba(33, 33, 63, 0.9));
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(155, 108, 255, 0.1);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .user-avatar-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        .user-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .user-email {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .user-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(155, 108, 255, 0.2);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .dashboard-section {
+            background: linear-gradient(145deg, rgba(27, 27, 51, 0.9), rgba(33, 33, 63, 0.9));
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(155, 108, 255, 0.1);
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent);
+        }
+
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-info {
+            flex: 1;
+        }
+
+        .setting-label {
+            font-weight: 500;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .setting-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .setting-action {
+            margin-left: 15px;
+        }
+
+        .btn-setting {
+            padding: 8px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-setting:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(155, 108, 255, 0.2);
+        }
+
+        .file-upload-group {
+            text-align: center;
+        }
+
+        .file-upload-label {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px dashed var(--accent);
+            border-radius: 8px;
+            color: var(--accent);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .file-upload-label:hover {
+            background: rgba(124, 58, 237, 0.2);
+        }
+
+        .file-upload-label i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        #dashboardAvatarInput {
+            display: none;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .btn-form {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn-save {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-cancel {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent), #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 40px 5%;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(155, 108, 255, 0.2),
+                0 0 30px rgba(155, 108, 255, 0.3);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: var(--transition);
+        }
+
+        .hero-image img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-icons i {
+            position: absolute;
+            font-size: 24px;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+
+        .floating-icons i:nth-child(1) { top: 10%; left: 5%; animation: float 6s infinite ease-in-out; }
+        .floating-icons i:nth-child(2) { top: 20%; right: 15%; animation: float 8s infinite ease-in-out 1s; }
+        .floating-icons i:nth-child(3) { bottom: 30%; left: 15%; animation: float 7s infinite ease-in-out 2s; }
+        .floating-icons i:nth-child(4) { bottom: 15%; right: 10%; animation: float 9s infinite ease-in-out 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Marquee Modern */
+        .marquee-container {
+            background: linear-gradient(90deg, rgba(27, 27, 51, 0.9), rgba(42, 42, 85, 0.7));
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(155, 108, 255, 0.3);
+            border-bottom: 1px solid rgba(155, 108, 255, 0.3);
+            padding: 15px 0;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: scroll 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .marquee-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 20px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: rgba(27, 27, 51, 0.7);
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Apps Grid Modern */
+        .apps-section {
+            padding: 20px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .app-card-modern {
+            background: linear-gradient(145deg, rgba(27, 27, 51, 0.9), rgba(33, 33, 63, 0.9));
+            border-radius: var(--radius);
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(155, 108, 255, 0.1);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .app-card-modern:hover {
+            transform: translateY(-10px);
+            border-color: rgba(155, 108, 255, 0.3);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(155, 108, 255, 0.2);
+        }
+
+        .app-card-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .app-icon-modern {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            margin-right: 18px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-title-modern {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .app-category {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .app-desc-modern {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .app-rating-modern {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-right: 10px;
+        }
+
+        .rating-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, rgba(27, 27, 51, 0.9), rgba(42, 42, 85, 0.9));
+            border-radius: var(--radius);
+            padding: 25px;
+            margin: 40px 5%;
+            border-left: 5px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .info-box h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* FOOTER MODERN */
+        .footer {
+            background: linear-gradient(180deg, rgba(21, 21, 42, 0.95) 0%, rgba(15, 15, 26, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            padding: 40px 5% 25px;
+            border-top: 1px solid rgba(155, 108, 255, 0.2);
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+        }
+
+        .footer-logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent), #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-about {
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links h3,
+        .footer-social h3 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3::after,
+        .footer-social h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .copyright {
+            font-size: 1rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .copyright-highlight {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(to right, var(--accent), #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(155, 108, 255, 0.3);
+        }
+
+        .copyright-year {
+            color: var(--primary);
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .back-to-top {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5);
+        }
+
+        /* Bottom Navigation Modern */
+        .bottom-nav-modern {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(21, 21, 42, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 50px;
+            padding: 12px 25px;
+            display: flex;
+            gap: 25px;
+            z-index: 1000;
+            border: 1px solid rgba(155, 108, 255, 0.2);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(155, 108, 255, 0.1);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 30px;
+            min-width: 70px;
+        }
+
+        .nav-item:hover {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--accent);
+        }
+
+        .nav-item.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .nav-item.vip .nav-icon {
+            color: #ffd700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            .header-info {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bottom-nav-modern {
+                bottom: 10px;
+                padding: 10px 15px;
+                gap: 15px;
+            }
+            
+            .nav-item {
+                min-width: 60px;
+                padding: 6px 10px;
+            }
+            
+            .nav-label {
+                font-size: 0.7rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .back-to-top {
+                position: relative;
+                margin: 20px auto 0;
+                top: 0;
+                transform: none;
+                right: auto;
+            }
+            
+            .footer-bottom {
+                padding-top: 20px;
+                margin-top: 30px;
+            }
+            
+            .copyright {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .sidebar-menu {
+                width: 280px;
+            }
+            
+            .user-dashboard {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(21, 21, 42, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            border-radius: 10px;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="menu-header">
+            <div class="menu-logo">Z</div>
+            <div class="menu-title">ZIPERR MENU</div>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Fitur Utama</h3>
+            <a href="https://tanziper-web.github.io/iphone/" target="_blank" class="menu-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Fitur iPhone</span>
+            </a>
+            <a href="https://tanziper-web.github.io/teks/" target="_blank" class="menu-item">
+                <i class="fas fa-font"></i>
+                <span>Fitur Teks</span>
+            </a>
+            <a href="https://tanziper-web.github.io/html-free/" target="_blank" class="menu-item">
+                <i class="fab fa-html5"></i>
+                <span>HTML Free</span>
+            </a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Media Sosial</h3>
+            <div class="social-channels">
+                <a href="https://tiktok.com" target="_blank" class="social-channel">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://wa.me/" target="_blank" class="social-channel">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://youtube.com" target="_blank" class="social-channel">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Menu Lainnya</h3>
+            <a href="#" class="menu-item" id="menuHome">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="menu-item" id="menuDashboard">
+                <i class="fas fa-user"></i>
+                <span>User Dashboard</span>
+            </a>
+            <a href="https://tanziper-web.github.io/ziper-/" target="_blank" class="menu-item">
+                <i class="fas fa-crown"></i>
+                <span>VIP</span>
+            </a>
+            <a href="https://tanziper-web.github.io/bug/" target="_blank" class="menu-item">
+                <i class="fas fa-bug"></i>
+                <span>Bug Report</span>
+            </a>
+            <a href="https://tanziper-web.github.io/top-up_1//" target="_blank" class="menu-item">
+                <i class="fas fa-gem"></i>
+                <span>Top Up Game</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- User Dashboard -->
+    <div class="dashboard-overlay" id="dashboardOverlay"></div>
+    <div class="user-dashboard" id="userDashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-title">User Dashboard</div>
+            <button class="close-dashboard" id="closeDashboard">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-info-card">
+            <img src="" alt="Avatar" id="dashboardAvatar" class="user-avatar-large">
+            <h2 class="user-name" id="dashboardName">Guest</h2>
+            <p class="user-email" id="dashboardEmail">guest@ziperr.com</p>
+            
+            <div class="user-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="daysActive">0</div>
+                    <div class="stat-label">Hari Aktif</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="downloadCount">0</div>
+                    <div class="stat-label">Total Download</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-section" id="settingsSection">
+            <h3 class="section-title"><i class="fas fa-cog"></i> Pengaturan Akun</h3>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Ubah Nama</div>
+                    <div class="setting-desc">Perbarui nama lengkap Anda</div>
+                </div>
+                <div class="setting-action">
+                    <button class="btn-setting" id="editNameBtn">Edit</button>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Ubah Foto Profil</div>
+                    <div class="setting-desc">Upload foto profil baru</div>
+                </div>
+                <div class="setting-action">
+                    <button class="btn-setting" id="editAvatarBtn">Edit</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-section" id="nameEditForm" style="display: none;">
+            <h3 class="section-title"><i class="fas fa-user-edit"></i> Ubah Nama</h3>
+            <form id="nameForm">
+                <div class="form-group">
+                    <label for="editUserName">Nama Lengkap</label>
+                    <input type="text" id="editUserName" placeholder="Masukkan nama baru Anda" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-form btn-save">Simpan</button>
+                    <button type="button" class="btn-form btn-cancel" id="cancelNameEdit">Batal</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="dashboard-section" id="avatarEditForm" style="display: none;">
+            <h3 class="section-title"><i class="fas fa-camera"></i> Ubah Foto Profil</h3>
+            <form id="avatarForm">
+                <div class="form-group file-upload-group">
+                    <label for="dashboardAvatarInput" class="file-upload-label">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Pilih Foto dari Perangkat Anda</span>
+                    </label>
+                    <input type="file" id="dashboardAvatarInput" accept="image/*">
+                    <div id="avatarFileName" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;"></div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-form btn-save">Simpan</button>
+                    <button type="button" class="btn-form btn-cancel" id="cancelAvatarEdit">Batal</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="dashboard-section">
+            <h3 class="section-title"><i class="fas fa-sign-out-alt"></i> Akun</h3>
+            <button class="btn-setting" style="width: 100%; background: rgba(239, 68, 68, 0.1); color: #ef4444;" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="logo">
+                <div class="logo-icon">Z</div>
+                <div class="logo-text">ZIPERR MODS</div>
+            </div>
+            <div class="header-info">
+                <i class="fas fa-sync-alt"></i>
+                <span style="margin-left: 8px; color: var(--accent); font-weight: 500;">Update Terbaru Tersedia</span>
+            </div>
+        </header>
+
+        <!-- Hero Section dengan Gambar -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>APK MOD Premium & Tools Eksklusif</h1>
+                <p>Temukan koleksi aplikasi modifikasi terbaik dengan fitur premium yang terbuka. Semua aplikasi diuji dan aman untuk digunakan.</p>
+                <div class="hero-stats">
+                    <div style="display: flex; gap: 20px; margin-top: 20px;">
+                        <div>
+                            <h3 style="color: var(--accent); font-size: 2rem;">30+</h3>
+                            <p style="color: var(--text-muted);">Aplikasi MOD</p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--accent); font-size: 2rem;">100%</h3>
+                            <p style="color: var(--text-muted);">Gratis & Aman</p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--accent); font-size: 2rem;">⭐ 5.0</h3>
+                            <p style="color: var(--text-muted);">Rating Pengguna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="gambar.jpg" alt="Ziperr Mods" id="hero-img">
+                <div class="floating-icons">
+                    <i class="fas fa-download"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-rocket"></i>
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Modern -->
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <div class="marquee-item"><i class="fas fa-bell"></i> Selamat datang di website resmi ziperr!</div>
+                <div class="marquee-item"><i class="fas fa-sync"></i> Update rutin setiap minggu - jangan lupa follow!</div>
+                <div class="marquee-item"><i class="fas fa-exclamation-triangle"></i> VIP akan tersedia di update selanjutnya!</div>
+                <div class="marquee-item"><i class="fas fa-download"></i> Semua aplikasi gratis dan aman digunakan!</div>
+                
+                <!-- Duplikat untuk efek loop -->
+                <div class="marquee-item"><i class="fas fa-bell"></i> Selamat datang di website resmi ziperr!</div>
+                <div class="marquee-item"><i class="fas fa-sync"></i> Update rutin setiap minggu - jangan lupa follow!</div>
+                <div class="marquee-item"><i class="fas fa-exclamation-triangle"></i> VIP akan tersedia di update selanjutnya!</div>
+                <div class="marquee-item"><i class="fas fa-download"></i> Semua aplikasi gratis dan aman digunakan!</div>
+            </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <h2><i class="fas fa-info-circle"></i> Informasi Penting</h2>
+            <p>Fitur VIP saat ini tidak dapat digunakan, namun akan tersedia di update selanjutnya. Pastikan untuk selalu mengikuti saluran ziperr untuk mendapatkan notifikasi update terbaru.</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <h2 style="margin-bottom: 20px; color: white;">Kategori Aplikasi</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+                <button class="filter-btn" data-filter="ai">AI & Coding</button>
+                <button class="filter-btn" data-filter="game">Game</button>
+                <button class="filter-btn" data-filter="editing">Editing</button>
+                <button class="filter-btn" data-filter="entertainment">Entertainment</button>
+            </div>
+        </div>
+
+        <!-- Apps Section -->
+        <div class="apps-section">
+            <h2 style="margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-download"></i> Download APK MOD
+            </h2>
+            <div class="apps-grid" id="apps-container">
+                <!-- App cards akan dimasukkan di sini oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">Z</div>
+                    <div class="footer-logo-text">ZIPERR MODS</div>
+                </div>
+                <p class="footer-about">
+                    Platform terpercaya untuk aplikasi modifikasi premium. Semua aplikasi diuji dan aman untuk digunakan. Update rutin setiap minggu dengan fitur terbaru.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Link Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#" id="footerDashboard"><i class="fas fa-chevron-right"></i> User Dashboard</a></li>
+                    <li><a href="https://tanziper-web.github.io/ziper-/" target="_blank"><i class="fas fa-chevron-right"></i> VIP</a></li>
+                    <li><a href="https://tanziper-web.github.io/bug/" target="_blank"><i class="fas fa-chevron-right"></i> Bug Report</a></li>
+                    <li><a href="https://tanziper-web.github.io/top-up_1//" target="_blank"><i class="fas fa-chevron-right"></i> Top Up Game</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Media Sosial</h3>
+                <div class="social-icons">
+                    <a href="https://tiktok.com" target="_blank" class="social-icon" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/" target="_blank" class="social-icon" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" class="social-icon" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <a href="#" class="back-to-top" title="Kembali ke atas">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+            
+            <div class="copyright">
+                <span>© 2024 - <span class="copyright-year">2026</span> |</span>
+                <span class="copyright-highlight">By ziperr</span>
+                <span>| All Rights Reserved</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Navigation Modern -->
+    <nav class="bottom-nav-modern">
+        <a href="#home" class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-label">Home</div>
+        </a>
+        <a href="#" class="nav-item" id="bottomDashboard">
+            <div class="nav-icon">👤</div>
+            <div class="nav-label">Dashboard</div>
+        </a>
+        <a href="https://tanziper-web.github.io/top-up_1//" target="_blank" class="nav-item">
+            <div class="nav-icon">💎</div>
+            <div class="nav-label">Top Up</div>
+        </a>
+        <a href="https://tanziper-web.github.io/ziper-/" target="_blank" class="nav-item vip">
+            <div class="nav-icon">🔰</div>
+            <div class="nav-label">VIP</div>
+        </a>
+    </nav>
+
+    <script>
+        // Data aplikasi
+        const appsData = [
+            { id: 1, title: "WINKIT", desc: "Biar apk lu HD boss", rating: "4.5", category: "tools", icon: "1.png", link: "https://sfl.gl/BCDIY" },
+            { id: 2, title: "CHAT SMITH", desc: "AI bisa lu tanyain apa aja", rating: "5.0", category: "ai", icon: "2.png", link: "https://sfl.gl/79KjQDb" },
+            { id: 3, title: "REMINI", desc: "Biar foto lu HD", rating: "5.0", category: "ai", icon: "3.png", link: "https://sfl.gl/72xY09" },
+            { id: 4, title: "MINECRAFT", desc: "Game kotak", rating: "5.0", category: "game", icon: "4.png", link: "https://sfl.gl/Fms9P8hA" },
+            { id: 5, title: "CAPCUT", desc: "Buat ngedit", rating: "5.0", category: "editing", icon: "5.png", link: "https://sfl.gl/RyIxOTU" },
+            { id: 6, title: "THE SPIKE VOLLEYBALL", desc: "New update", rating: "5.0", category: "game", icon: "6.png", link: "https://sfl.gl/72xY09" },
+            { id: 7, title: "GAME BOOSTER", desc: "APK buat HP lu keserupan ROG", rating: "5.0", category: "tools", icon: "7.png", link: "https://sfl.gl/NbYOdTpW" },
+            { id: 8, title: "PICSART", desc: "Biar foto lu HD", rating: "5.0", category: "editing", icon: "8.png", link: "https://sfl.gl/PTcpmdY8" },
+            { id: 9, title: "WINK", desc: "Biar apk lu HD", rating: "5.0", category: "tools", icon: "9.png", link: "https://sfl.gl/QgfAl" },
+            { id: 10, title: "STRAVA", desc: "Buat adu pace", rating: "5.0", category: "tools", icon: "10.png", link: "https://sfl.gl/1JIDx62" },
+            { id: 11, title: "TELEGRAM", desc: "Buat banyak lah", rating: "5.0", category: "tools", icon: "11.png", link: "https://sfl.gl/ZkjXA7" },
+            { id: 12, title: "NEKOPOI", desc: "New update", rating: "5.0", category: "entertainment", icon: "12.png", link: "https://www.mediafire.com/file/e43g4p9088zpxwn/Kucing.apk/file" },
+            { id: 13, title: "MT MANAGER", desc: "Simpen file", rating: "5.0", category: "tools", icon: "13.png", link: "https://sfl.gl/Phu7l6F" },
+            { id: 14, title: "FOMZ", desc: "Kamera lu kesurupan iPhone", rating: "5.0", category: "tools", icon: "14.png", link: "https://sfl.gl/QnCcGA" },
+            { id: 15, title: "SPOTIFY", desc: "Laguu", rating: "5.0", category: "entertainment", icon: "15.png", link: "https://sfl.gl/hZoVD" },
+            { id: 16, title: "ULTRA MOTION", desc: "Buat ngedit", rating: "5.0", category: "editing", icon: "16.png", link: "https://sfl.gl/msUrkTfA" },
+            { id: 17, title: "FIZO NOVEL", desc: "Nonton drakor", rating: "5.0", category: "entertainment", icon: "17.png", link: "https://sfl.gl/J4S4z" },
+            { id: 18, title: "DOLA AI", desc: "Buat jadiin babu", rating: "5.0", category: "ai", icon: "18.png", link: "https://sfl.gl/Hvl5a" },
+            { id: 19, title: "DRAMA BOX", desc: "Nonton drakor", rating: "5.0", category: "entertainment", icon: "19.png", link: "https://sfl.gl/IHq7uL" },
+            { id: 20, title: "GAME PANEL", desc: "Biar HP lu kesurupan ROG", rating: "5.0", category: "tools", icon: "20.png", link: "https://sfl.gl/m4fbI" },
+            { id: 21, title: "ALIG MOTION ORIGINAL", desc: "Buat ngedit", rating: "5.0", category: "editing", icon: "21.png", link: "https://sfl.gl/D5hDfgM" },
+            { id: 22, title: "YT MUSIK", desc: "Buat lagu", rating: "5.0", category: "entertainment", icon: "22.png", link: "https://sfl.gl/DBxj" },
+            { id: 23, title: "CINEMA VIP", desc: "New update", rating: "5.0", category: "entertainment", icon: "23.png", link: "https://sfl.gl/YBJh" },
+            { id: 24, title: "FISHING HOOK", desc: "Mancing", rating: "5.0", category: "game", icon: "24.png", link: "https://sfl.gl/iDgsV" },
+            { id: 25, title: "HOT 51", desc: "Buat nonton live 🗿", rating: "5.0", category: "entertainment", icon: "25.png", link: "https://www.mediafire.com/file/eeq8v4j1ijkf0ui/HOT51.zip/file" },
+            { id: 26, title: "TERABOX", desc: "Buat simpan file", rating: "5.0", category: "tools", icon: "26.png", link: "https://sfl.gl/gJLoOoM" },
+            { id: 27, title: "4G LITE SWITCHER", desc: "Biar 5G kali", rating: "5.0", category: "tools", icon: "27.png", link: "https://sfl.gl/gJLoOoM" },
+            { id: 28, title: "NOVA LAUNCHER", desc: "Biar tampilan HP lu bagus", rating: "5.0", category: "tools", icon: "28.png", link: "https://sfl.gl/UyC8o" },
+            { id: 29, title: "SMART LAUNCHER", desc: "Biar tampilan HP lu bagus", rating: "5.0", category: "tools", icon: "29.png", link: "https://sfl.gl/4enI" },
+            { id: 30, title: "8 BALL POOL", desc: "Game", rating: "5.0", category: "game", icon: "30.png", link: "https://sfl.gl/FXxd" },
+            { id: 31, title: "GAME TURBO X PRO", desc: "Game turbo", rating: "5.0", category: "tools", icon: "31.png", link: "https://sfl.gl/qRVs6" }
+            
+        ];
+
+        // Fungsi untuk membuat star rating
+        function createStars(rating) {
+            const stars = Math.floor(parseFloat(rating));
+            let starsHTML = '';
+            
+            for (let i = 0; i < 5; i++) {
+                if (i < stars) {
+                    starsHTML += '<i class="fas fa-star"></i>';
+                } else {
+                    starsHTML += '<i class="far fa-star"></i>';
+                }
+            }
+            
+            return starsHTML;
+        }
+
+        // Fungsi untuk render aplikasi
+        function renderApps(filter = 'all') {
+            const container = document.getElementById('apps-container');
+            container.innerHTML = '';
+            
+            const filteredApps = filter === 'all' 
+                ? appsData 
+                : appsData.filter(app => app.category === filter);
+            
+            filteredApps.forEach(app => {
+                const appElement = document.createElement('div');
+                appElement.className = 'app-card-modern';
+                appElement.innerHTML = `
+                    <div class="app-header">
+                        <img src="${app.icon}" class="app-icon-modern" alt="${app.title}">
+                        <div>
+                            <div class="app-title-modern">${app.title}</div>
+                            <span class="app-category">${app.category.toUpperCase()}</span>
+                        </div>
+                    </div>
+                    <p class="app-desc-modern">${app.desc}</p>
+                    <div class="app-rating-modern">
+                        <div class="stars">${createStars(app.rating)}</div>
+                        <div class="rating-text">${app.rating} • ${app.category === 'ai' ? 'AI & Coding' : app.category.charAt(0).toUpperCase() + app.category.slice(1)}</div>
+                    </div>
+                    <a href="${app.link}" target="_blank" class="download-btn" data-app-id="${app.id}">
+                        <i class="fas fa-download"></i> Download APK
+                    </a>
+                `;
+                
+                container.appendChild(appElement);
+            });
+        }
+
+        // Sistem User Management
+        class UserManager {
+            constructor() {
+                this.currentUser = null;
+                this.downloadHistory = [];
+                this.init();
+            }
+            
+            init() {
+                this.loadUser();
+                this.loadDownloadHistory();
+                this.setupEventListeners();
+                this.updateDashboardDisplay();
+                this.setupFileUpload();
+                this.setupDownloadTracking();
+            }
+            
+            loadUser() {
+                const savedUser = localStorage.getItem('ziperr_user');
+                if (savedUser) {
+                    this.currentUser = JSON.parse(savedUser);
+                    
+                    // Hitung hari aktif jika ada tanggal pembuatan
+                    if (!this.currentUser.createdAt) {
+                        this.currentUser.createdAt = new Date().toISOString();
+                        this.saveUser();
+                    }
+                } else {
+                    // Buat user default jika belum ada
+                    this.currentUser = {
+                        id: 'user_' + Date.now(),
+                        name: 'Guest',
+                        email: 'guest@ziperr.com',
+                        avatar: '',
+                        createdAt: new Date().toISOString(),
+                        lastLogin: new Date().toISOString()
+                    };
+                    this.saveUser();
+                }
+                
+                // Update last login
+                this.currentUser.lastLogin = new Date().toISOString();
+                this.saveUser();
+            }
+            
+            loadDownloadHistory() {
+                const savedHistory = localStorage.getItem('ziperr_downloads');
+                if (savedHistory) {
+                    this.downloadHistory = JSON.parse(savedHistory);
+                } else {
+                    this.downloadHistory = [];
+                }
+            }
+            
+            saveUser() {
+                localStorage.setItem('ziperr_user', JSON.stringify(this.currentUser));
+            }
+            
+            saveDownloadHistory() {
+                localStorage.setItem('ziperr_downloads', JSON.stringify(this.downloadHistory));
+            }
+            
+            updateUser(data) {
+                this.currentUser = { ...this.currentUser, ...data };
+                this.saveUser();
+                this.updateDashboardDisplay();
+            }
+            
+            addDownload(appId) {
+                const downloadRecord = {
+                    appId: appId,
+                    timestamp: new Date().toISOString(),
+                    appName: appsData.find(app => app.id === appId)?.title || 'Unknown'
+                };
+                
+                this.downloadHistory.push(downloadRecord);
+                this.saveDownloadHistory();
+                this.updateDashboardDisplay();
+            }
+            
+            getDaysActive() {
+                if (!this.currentUser.createdAt) return 0;
+                
+                const createdAt = new Date(this.currentUser.createdAt);
+                const now = new Date();
+                const diffTime = Math.abs(now - createdAt);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                return diffDays;
+            }
+            
+            getDownloadCount() {
+                return this.downloadHistory.length;
+            }
+            
+            logout() {
+                // Reset ke user guest
+                this.currentUser = {
+                    id: 'user_' + Date.now(),
+                    name: 'Guest',
+                    email: 'guest@ziperr.com',
+                    avatar: '',
+                    createdAt: new Date().toISOString(),
+                    lastLogin: new Date().toISOString()
+                };
+                this.downloadHistory = [];
+                this.saveUser();
+                this.saveDownloadHistory();
+                this.updateDashboardDisplay();
+                this.showNotification('Berhasil logout');
+            }
+            
+            setupFileUpload() {
+                const avatarInput = document.getElementById('dashboardAvatarInput');
+                const avatarFileName = document.getElementById('avatarFileName');
+                
+                if (avatarInput) {
+                    avatarInput.addEventListener('change', (e) => {
+                        const file = e.target.files[0];
+                        if (file) {
+                            // Tampilkan nama file
+                            avatarFileName.textContent = `File: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+                            
+                            // Preview gambar sebelum upload
+                            const reader = new FileReader();
+                            reader.onload = (event) => {
+                                const dashboardAvatar = document.getElementById('dashboardAvatar');
+                                if (dashboardAvatar) {
+                                    dashboardAvatar.src = event.target.result;
+                                }
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                }
+            }
+            
+            setupDownloadTracking() {
+                document.addEventListener('click', (e) => {
+                    const downloadBtn = e.target.closest('.download-btn');
+                    if (downloadBtn && downloadBtn.dataset.appId) {
+                        const appId = parseInt(downloadBtn.dataset.appId);
+                        this.addDownload(appId);
+                    }
+                });
+            }
+            
+            updateDashboardDisplay() {
+                const dashboardName = document.getElementById('dashboardName');
+                const dashboardEmail = document.getElementById('dashboardEmail');
+                const dashboardAvatar = document.getElementById('dashboardAvatar');
+                const daysActive = document.getElementById('daysActive');
+                const downloadCount = document.getElementById('downloadCount');
+                
+                if (dashboardName) dashboardName.textContent = this.currentUser.name;
+                if (dashboardEmail) dashboardEmail.textContent = this.currentUser.email;
+                if (dashboardAvatar) dashboardAvatar.src = this.currentUser.avatar || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMxNTE1MmEiLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNDAiIGZpbGw9IiM3YzNhZWQiLz48cGF0aCBkPSJNMTAwIDE0MEM2MCAxNDAgNjAgMTQwIDYwIDIwMEgxNDBDMTQwIDE0MCAxNDAgMTQwIDEwMCAxNDBaIiBmaWxsPSIjN2MzYWVkIi8+PC9zdmc+';
+                if (daysActive) daysActive.textContent = this.getDaysActive();
+                if (downloadCount) downloadCount.textContent = this.getDownloadCount();
+                
+                // Update form values
+                const editUserName = document.getElementById('editUserName');
+                if (editUserName) editUserName.value = this.currentUser.name;
+            }
+            
+            setupEventListeners() {
+                // Form ubah nama
+                const nameForm = document.getElementById('nameForm');
+                if (nameForm) {
+                    nameForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        
+                        const newName = document.getElementById('editUserName').value;
+                        if (newName && newName.trim() !== '') {
+                            this.updateUser({ name: newName.trim() });
+                            this.showNotification('Nama berhasil diperbarui!');
+                            this.hideNameEditForm();
+                        }
+                    });
+                }
+                
+                // Form ubah avatar
+                const avatarForm = document.getElementById('avatarForm');
+                if (avatarForm) {
+                    avatarForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        
+                        const avatarInput = document.getElementById('dashboardAvatarInput');
+                        if (avatarInput.files && avatarInput.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = (event) => {
+                                this.updateUser({ avatar: event.target.result });
+                                this.showNotification('Foto profil berhasil diperbarui!');
+                                this.hideAvatarEditForm();
+                                
+                                // Reset file input
+                                avatarInput.value = '';
+                                const avatarFileName = document.getElementById('avatarFileName');
+                                if (avatarFileName) avatarFileName.textContent = '';
+                            };
+                            reader.readAsDataURL(avatarInput.files[0]);
+                        }
+                    });
+                }
+                
+                // Tombol edit nama
+                const editNameBtn = document.getElementById('editNameBtn');
+                if (editNameBtn) {
+                    editNameBtn.addEventListener('click', () => {
+                        this.showNameEditForm();
+                    });
+                }
+                
+                // Tombol edit avatar
+                const editAvatarBtn = document.getElementById('editAvatarBtn');
+                if (editAvatarBtn) {
+                    editAvatarBtn.addEventListener('click', () => {
+                        this.showAvatarEditForm();
+                    });
+                }
+                
+                // Tombol cancel
+                const cancelNameEdit = document.getElementById('cancelNameEdit');
+                const cancelAvatarEdit = document.getElementById('cancelAvatarEdit');
+                
+                if (cancelNameEdit) {
+                    cancelNameEdit.addEventListener('click', () => {
+                        this.hideNameEditForm();
+                    });
+                }
+                
+                if (cancelAvatarEdit) {
+                    cancelAvatarEdit.addEventListener('click', () => {
+                        this.hideAvatarEditForm();
+                    });
+                }
+                
+                // Tombol logout
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => {
+                        this.logout();
+                    });
+                }
+            }
+            
+            showNameEditForm() {
+                const settingsSection = document.getElementById('settingsSection');
+                const nameEditForm = document.getElementById('nameEditForm');
+                
+                if (settingsSection) settingsSection.style.display = 'none';
+                if (nameEditForm) nameEditForm.style.display = 'block';
+            }
+            
+            hideNameEditForm() {
+                const settingsSection = document.getElementById('settingsSection');
+                const nameEditForm = document.getElementById('nameEditForm');
+                
+                if (settingsSection) settingsSection.style.display = 'block';
+                if (nameEditForm) nameEditForm.style.display = 'none';
+            }
+            
+            showAvatarEditForm() {
+                const settingsSection = document.getElementById('settingsSection');
+                const avatarEditForm = document.getElementById('avatarEditForm');
+                
+                if (settingsSection) settingsSection.style.display = 'none';
+                if (avatarEditForm) avatarEditForm.style.display = 'block';
+            }
+            
+            hideAvatarEditForm() {
+                const settingsSection = document.getElementById('settingsSection');
+                const avatarEditForm = document.getElementById('avatarEditForm');
+                
+                if (settingsSection) settingsSection.style.display = 'block';
+                if (avatarEditForm) avatarEditForm.style.display = 'none';
+            }
+            
+            showNotification(message) {
+                // Buat notifikasi sederhana
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 80px;
+                    right: 20px;
+                    background: linear-gradient(135deg, var(--primary), var(--accent));
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+        }
+
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inisialisasi User Manager
+            const userManager = new UserManager();
+            
+            // Render semua aplikasi awal
+            renderApps();
+            
+            // Setup filter buttons
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Hapus active class dari semua button
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Tambah active class ke button yang diklik
+                    this.classList.add('active');
+                    
+                    // Filter aplikasi
+                    const filter = this.getAttribute('data-filter');
+                    renderApps(filter);
+                });
+            });
+            
+            // Setup navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (!this.getAttribute('href') || !this.getAttribute('href').startsWith('http')) {
+                        e.preventDefault();
+                        
+                        // Hapus active class dari semua nav items
+                        document.querySelectorAll('.nav-item').forEach(nav => {
+                            nav.classList.remove('active');
+                        });
+                        
+                        // Tambah active class ke nav yang diklik
+                        this.classList.add('active');
+                        
+                        // Scroll ke bagian yang sesuai
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#home') {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+            
+            // Hamburger Menu
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const sidebarMenu = document.getElementById('sidebarMenu');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            
+            if (hamburgerMenu && sidebarMenu && sidebarOverlay) {
+                hamburgerMenu.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    sidebarMenu.classList.toggle('active');
+                    sidebarOverlay.classList.toggle('active');
+                });
+                
+                sidebarOverlay.addEventListener('click', function() {
+                    hamburgerMenu.classList.remove('active');
+                    sidebarMenu.classList.remove('active');
+                    this.classList.remove('active');
+                });
+            }
+            
+            // User Dashboard
+            const userDashboard = document.getElementById('userDashboard');
+            const dashboardOverlay = document.getElementById('dashboardOverlay');
+            const closeDashboard = document.getElementById('closeDashboard');
+            
+            function openDashboard() {
+                if (userDashboard && dashboardOverlay) {
+                    userDashboard.classList.add('active');
+                    dashboardOverlay.classList.add('active');
+                }
+            }
+            
+            function closeDashboardFunc() {
+                if (userDashboard && dashboardOverlay) {
+                    userDashboard.classList.remove('active');
+                    dashboardOverlay.classList.remove('active');
+                    userManager.hideNameEditForm();
+                    userManager.hideAvatarEditForm();
+                }
+            }
+            
+            if (closeDashboard) {
+                closeDashboard.addEventListener('click', closeDashboardFunc);
+            }
+            
+            if (dashboardOverlay) {
+                dashboardOverlay.addEventListener('click', closeDashboardFunc);
+            }
+            
+            // Link untuk buka dashboard dari berbagai tempat
+            const menuDashboard = document.getElementById('menuDashboard');
+            const footerDashboard = document.getElementById('footerDashboard');
+            const bottomDashboard = document.getElementById('bottomDashboard');
+            
+            [menuDashboard, footerDashboard, bottomDashboard].forEach(element => {
+                if (element) {
+                    element.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Tutup sidebar jika terbuka
+                        if (hamburgerMenu && sidebarMenu && sidebarOverlay) {
+                            hamburgerMenu.classList.remove('active');
+                            sidebarMenu.classList.remove('active');
+                            sidebarOverlay.classList.remove('active');
+                        }
+                        
+                        // Buka dashboard
+                        openDashboard();
+                    });
+                }
+            });
+            
+            // Menu Home
+            const menuHome = document.getElementById('menuHome');
+            if (menuHome) {
+                menuHome.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    // Tutup sidebar
+                    if (hamburgerMenu && sidebarMenu && sidebarOverlay) {
+                        hamburgerMenu.classList.remove('active');
+                        sidebarMenu.classList.remove('active');
+                        sidebarOverlay.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Back to top button
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Efek loading untuk download button
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('download-btn') || e.target.closest('.download-btn')) {
+                    const btn = e.target.classList.contains('download-btn') ? e.target : e.target.closest('.download-btn');
+                    const originalText = btn.innerHTML;
+                    
+                    btn.innerHTML = '<span class="loading"></span> Mengunduh...';
+                    btn.style.opacity = '0.8';
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.opacity = '1';
+                    }, 1500);
+                }
+            });
+            
+            // Animasi saat scroll
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const heroImage = document.getElementById('hero-img');
+                
+                if (heroImage) {
+                    heroImage.style.transform = `perspective(1000px) rotateY(-5deg) translateY(${scrollPosition * 0.05}px)`;
+                }
+                
+                // Tampilkan/sembunyikan back to top button
+                if (backToTopBtn) {
+                    if (scrollPosition > 500) {
+                        backToTopBtn.style.opacity = '1';
+                        backToTopBtn.style.visibility = 'visible';
+                    } else {
+                        backToTopBtn.style.opacity = '0';
+                        backToTopBtn.style.visibility = 'hidden';
+                    }
+                }
+            });
+            
+            // Update tahun otomatis di footer
+            const yearElement = document.querySelector('.copyright-year');
+            if (yearElement) {
+                // Tetap 2026 sesuai permintaan
+                yearElement.textContent = '2026';
+            }
+            
+            // Close sidebar saat klik menu item (untuk mobile)
+            document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (!this.getAttribute('href') || this.getAttribute('href').startsWith('#')) {
+                        // Hanya untuk link internal, bukan external
+                        if (hamburgerMenu && sidebarMenu && sidebarOverlay) {
+                            hamburgerMenu.classList.remove('active');
+                            sidebarMenu.classList.remove('active');
+                            sidebarOverlay.classList.remove('active');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
